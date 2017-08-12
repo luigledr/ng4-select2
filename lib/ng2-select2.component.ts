@@ -7,7 +7,11 @@ import { Select2OptionData } from './ng2-select2.interface';
 
 @Component({
     selector: 'select2',
-    template: '<select #selector></select>',
+    template: `
+        <select #selector>
+            <ng-content select="option, optgroup">
+            </ng-content>
+        </select>`,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -18,10 +22,10 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
     @Input() data: Array<Select2OptionData>;
 
     // value for select2
-    @Input() value: any;
+    @Input() value: string | string[];
 
     // enable / disable default style for select2
-    @Input() cssImport: boolean = true;
+    @Input() cssImport: boolean = false;
 
     // width of select2 input
     @Input() width: string;
@@ -65,7 +69,8 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
 
             const newValue: string = this.element.val();
             this.valueChanged.emit({
-                value: newValue
+                value: newValue,
+                data: this.element.select2('data')
             });
         }
 
@@ -75,7 +80,8 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             this.setElementValue(newValue);
 
             this.valueChanged.emit({
-                value: newValue
+                value: newValue,
+                data: this.element.select2('data')
             });
         }
 
@@ -85,8 +91,6 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
     }
 
     ngAfterViewInit() {
-        let that = this;
-
         this.element = jQuery(this.selector.nativeElement);
         this.initPlugin();
 
@@ -94,9 +98,10 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
             this.setElementValue(this.value);
         }
 
-        this.element.on('select2:select select2:unselect', function () {
-            that.valueChanged.emit({
-                value: that.element.val()
+        this.element.on('select2:select select2:unselect', () => {
+            this.valueChanged.emit({
+                value: this.element.val(),
+                data: this.element.select2('data')
             });
         });
     }
@@ -146,18 +151,17 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         }
     }
 
-    private setElementValue (newValue:any) {
-        // NOTE:
-        // Multiple values are received from ngOnChanges as a string with single values separated by comma.
-        // Select2OptionData id values should not contain commas for predictable results.
-        // While using commas in ids is a bad idea generally, here may cause malfunctions.
-        // This works for arrays too.
-
-        if(typeof newValue === 'string') {
-            newValue = newValue.split(',');
+    private setElementValue (newValue: string | string[]) {
+        if(Array.isArray(newValue)) {
+            for (let option of this.selector.nativeElement.options) {
+                if (newValue.indexOf(option.value) > -1) {
+                    this.renderer.setElementProperty(option, 'selected', 'true');
+                }
+           }
+        } else {
+            this.renderer.setElementProperty(this.selector.nativeElement, 'value', newValue);
         }
 
-        this.element.val(newValue);
         this.element.trigger('change.select2');
     }
 

@@ -1,7 +1,7 @@
 {
   "name": "ng4-select2",
-  "version": "1.0.0-beta.7",
-  "description": "Angular4 wrapper for select2",
+  "version": "1.0.0-beta.10",
+  "description": "Angular2 wrapper for select2. A fork from https://github.com/NejcZdovc/ng2-select2",
   "main": "ng2-select2.bundle.js",
   "jsnext:main": "ng2-select2.js",
   "typings": "ng2-select2.d.ts",
@@ -9,10 +9,10 @@
   "types": "ng2-select2.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/luigledr/ng4-select2"
+    "url": "https://github.com/luigledr/ng4-select2.git"
   },
   "keywords": [
-    "angular4",
+    "angular2",
     "select2",
     "wrap"
   ],
@@ -31,7 +31,7 @@
     "@types/select2": "^4.0.31"
   },
   "peerDependencies": {
-    "@angular/core": "^4.3.0"
+    "@angular/core": ">=4.3.0"
   },
   "devDependencies": {
     "@angular/common": "^4.3.0",
