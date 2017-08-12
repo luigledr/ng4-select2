@@ -1,6 +1,6 @@
 {
   "name": "ng4-select2",
-  "version": "1.0.0-beta.11",
+  "version": "1.0.0-beta.13",
   "description": "Angular2 wrapper for select2. A fork from https://github.com/NejcZdovc/ng2-select2",
   "main": "ng4-select2.bundle.js",
   "jsnext:main": "ng4-select2.js",
@@ -12,7 +12,7 @@
     "url": "https://github.com/luigledr/ng4-select2.git"
   },
   "keywords": [
-    "angular2",
+    "angular4",
     "select2",
     "wrap"
   ],
@@ -46,7 +46,7 @@
     "rollup": "^0.41.4",
     "rxjs": "^5.0.3",
     "ts-node": "^2.0.0",
-    "typescript": "^2.1.5",
-    "zone.js": "^0.7.4"
+    "typescript": "^2.1.0",
+    "zone.js": "^0.8.0"
   }
 }
