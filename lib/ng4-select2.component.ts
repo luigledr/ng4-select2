@@ -3,7 +3,7 @@ import {
     Output, SimpleChanges, ViewChild, ViewEncapsulation, Renderer, OnInit
 } from '@angular/core';
 
-import { Select2OptionData } from './ng2-select2.interface';
+import { Select2OptionData } from './ng4-select2.interface';
 
 @Component({
     selector: 'select2',

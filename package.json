@@ -1,12 +1,12 @@
 {
   "name": "ng4-select2",
-  "version": "1.0.0-beta.10",
+  "version": "1.0.0-beta.11",
   "description": "Angular2 wrapper for select2. A fork from https://github.com/NejcZdovc/ng2-select2",
-  "main": "ng2-select2.bundle.js",
-  "jsnext:main": "ng2-select2.js",
-  "typings": "ng2-select2.d.ts",
-  "module": "ng2-select2.js",
-  "types": "ng2-select2.d.ts",
+  "main": "ng4-select2.bundle.js",
+  "jsnext:main": "ng4-select2.js",
+  "typings": "ng4-select2.d.ts",
+  "module": "ng4-select2.js",
+  "types": "ng4-select2.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/luigledr/ng4-select2.git"
@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/luigledr/ng4-select2",
   "scripts": {
-    "finish": "mv lib/ng2-select2.component.ts.bak lib/ng2-select2.component.ts && cp README.md dist && rimraf dist/ng2-select2.component.css",
-    "build": "rimraf dist && ts-node tools/inline-styles.ts && tsc -p tsconfig-esm.json && rollup -c rollup.config.js dist/ng2-select2.js > dist/ng2-select2.bundle.js && cp package.json dist && ts-node tools/cleanup.ts && ngc -c tsconfig-esm.json && npm run finish"
+    "finish": "mv lib/ng4-select2.component.ts.bak lib/ng4-select2.component.ts && cp README.md dist && rimraf dist/ng4-select2.component.css",
+    "build": "rimraf dist && ts-node tools/inline-styles.ts && tsc -p tsconfig-esm.json && rollup -c rollup.config.js dist/ng4-select2.js > dist/ng4-select2.bundle.js && cp package.json dist && ts-node tools/cleanup.ts && ngc -c tsconfig-esm.json && npm run finish"
   },
   "dependencies": {
     "@types/jquery": "^2.0.39",
