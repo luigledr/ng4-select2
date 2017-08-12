@@ -1,7 +1,7 @@
 {
-  "name": "ng2-select2",
+  "name": "ng4-select2",
   "version": "1.0.0-beta.7",
-  "description": "Angular2 wrapper for select2",
+  "description": "Angular4 wrapper for select2",
   "main": "ng2-select2.bundle.js",
   "jsnext:main": "ng2-select2.js",
   "typings": "ng2-select2.d.ts",
@@ -9,19 +9,19 @@
   "types": "ng2-select2.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NejcZdovc/ng2-select2.git"
+    "url": "https://github.com/luigledr/ng4-select2"
   },
   "keywords": [
-    "angular2",
+    "angular4",
     "select2",
     "wrap"
   ],
-  "author": "Nejc Zdovc <nejc.zdovc@3zsistemi.si>",
+  "author": "Luiz Oliveira <luizoliveira@outlook.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/NejcZdovc/ng2-select2/issues"
+    "url": "https://github.com/luigledr/ng4-select2/issues"
   },
-  "homepage": "https://github.com/NejcZdovc/ng2-select2",
+  "homepage": "https://github.com/luigledr/ng4-select2",
   "scripts": {
     "finish": "mv lib/ng2-select2.component.ts.bak lib/ng2-select2.component.ts && cp README.md dist && rimraf dist/ng2-select2.component.css",
     "build": "rimraf dist && ts-node tools/inline-styles.ts && tsc -p tsconfig-esm.json && rollup -c rollup.config.js dist/ng2-select2.js > dist/ng2-select2.bundle.js && cp package.json dist && ts-node tools/cleanup.ts && ngc -c tsconfig-esm.json && npm run finish"
@@ -31,15 +31,15 @@
     "@types/select2": "^4.0.31"
   },
   "peerDependencies": {
-    "@angular/core": "^2.2.0"
+    "@angular/core": "^4.3.0"
   },
   "devDependencies": {
-    "@angular/common": "^2.4.4",
-    "@angular/compiler": "^2.4.4",
-    "@angular/compiler-cli": "^2.4.4",
-    "@angular/core": "^2.4.4",
-    "@angular/platform-browser": "^2.4.4",
-    "@angular/platform-browser-dynamic": "^2.4.4",
+    "@angular/common": "^4.3.0",
+    "@angular/compiler": "^4.3.0",
+    "@angular/compiler-cli": "^4.3.0",
+    "@angular/core": "^4.3.0",
+    "@angular/platform-browser": "^4.3.0",
+    "@angular/platform-browser-dynamic": "^4.3.0",
     "@types/node": "^7.0.0",
     "core-js": "^2.4.1",
     "rimraf": "^2.5.4",
