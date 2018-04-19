@@ -2,10 +2,16 @@ import {
     AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy,
     Output, SimpleChanges, ViewChild, ViewEncapsulation, Renderer, OnInit
 } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR,  } from '@angular/forms';
 
 import { Select2OptionData } from './ng4-select2.interface';
 
 @Component({
+    providers: [{
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: Select2Component,
+        multi: true
+    }],
     selector: 'select2',
     template: `
         <select #selector>
@@ -15,7 +21,7 @@ import { Select2OptionData } from './ng4-select2.interface';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, OnInit {
+export class Select2Component implements ControlValueAccessor, AfterViewInit, OnChanges, OnDestroy, OnInit {
     @ViewChild('selector') selector: ElementRef;
 
     // data for select2 drop down
@@ -41,6 +47,8 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
 
     private element: JQuery = undefined;
     private check: boolean = false;
+    private onChange:any;
+
 
     constructor(private renderer: Renderer) { }
 
@@ -163,7 +171,24 @@ export class Select2Component implements AfterViewInit, OnChanges, OnDestroy, On
         }
 
         this.element.trigger('change.select2');
+
+        if(this.onChange){
+            this.onChange(newValue);
+        }
     }
+
+    //#region ControlValueAccessor
+    writeValue(value:string|string[]):void{
+        this.setElementValue(value);
+    }
+
+    registerOnChange(fn: any): void {
+        this.onChange = fn;
+    }
+
+    registerOnTouched(fn: any): void {}
+
+    //#endregion
 
     private style: string = `CSS`;
 }
