@@ -1,0 +1,1 @@
+export { Select2Module, Select2Component, Select2OptionData, Select2TemplateFunction } from './lib/ng4-select2';
